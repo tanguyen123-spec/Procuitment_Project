@@ -24,20 +24,29 @@ CREATE TABLE ArtWork (
 
 -- Tạo bảng Quality
 CREATE TABLE Quality (
-    AWID varchar(50),
-    PCS int,
+    AWID varchar(50)  PRIMARY KEY,
+    PCScustomer int,
     color varchar(50),
     size Varchar(50),
     Note text,
     FOREIGN KEY (AWID) REFERENCES ArtWork(AWID)
+
 );
+CREATE TABLE Users (
+    UserID varchar(30)  PRIMARY KEY,
+	NameUser varchar(20),
+	Role_ bit,
+	Password_ varchar(50),
+);
+
+
 CREATE TABLE SupplierInFo (
     SlID varchar(50),
     SupplierName varchar(50),
     CategoriesID varchar(50),
     Address_ varchar (100),
 	City varchar(100),
-    EstablishedYear int,
+    EstablishedYear varchar(50),
 	Numberofworkers int,
 	 MainProductID varchar(50),
 	MOQ   varchar (100),
@@ -46,13 +55,16 @@ CREATE TABLE SupplierInFo (
 	SampleProcess varchar(100),
 	Leadtime varchar(100),
 	ExportUS bit,
+	Websitelink varchar(100),
+	Email varchar(30),
+	Phone varchar(30),
+	ContactPerson varchar(30),
+	Note text,
+	UserID varchar(30),
+	ReviewQA bit,
+	DateQA datetime,
    FOREIGN KEY (CategoriesID) REFERENCES Categories(CategoriesID),
-   FOREIGN KEY (MainProductID) REFERENCES MainProduct(MainProductID)
-);
-CREATE TABLE Staff (
-    StaffID varchar(50),
-	NameStaff varchar(20),
-	Role_ bit,
-	Password_ varchar(50),
+   FOREIGN KEY (MainProductID) REFERENCES MainProduct(MainProductID),
+   FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
