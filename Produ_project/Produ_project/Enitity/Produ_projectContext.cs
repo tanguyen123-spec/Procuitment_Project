@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Produ_project.Secure.Data;
 
 namespace Produ_project.Enitity
 {
@@ -22,13 +23,13 @@ namespace Produ_project.Enitity
         public virtual DbSet<Quality> Qualities { get; set; } = null!;
         public virtual DbSet<SupplierInFo> SupplierInFos { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
-
+        public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-9DIIF9V;Initial Catalog=Produ_project;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-SR6CI3Q\\SQLEXPRESS;Initial Catalog=Produ_project;Integrated Security=True");
             }
         }
 
@@ -258,7 +259,7 @@ namespace Produ_project.Enitity
                     .IsUnicode(false);
 
                 entity.Property(e => e.Password)
-                    .HasMaxLength(50)
+                    .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("Password_");
 

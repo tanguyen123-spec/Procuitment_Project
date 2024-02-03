@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Produ_project.Enitity;
 using Produ_project.Model;
@@ -16,7 +17,7 @@ namespace Produ_project.Controllers
         {
             _categoryService = categoryService;
         }
-
+        [Authorize(Roles = "True")]
         [HttpGet]
         public async Task<IActionResult> GetAllCategories()
         {
